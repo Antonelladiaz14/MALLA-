@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Administración Hotelera y Gastronómica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f5fa;
+      color: #4a3f55;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #9b5de5;
+      margin-bottom: 40px;
+    }
+    .malla {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .semestre {
+      background: #f4e1f4;
+      border-radius: 10px;
+      padding: 15px;
+      width: 220px;
+      box-shadow: 0 2px 8px rgba(155, 93, 229, 0.2);
+    }
+    .semestre h2 {
+      text-align: center;
+      color: #a678b5;
+      margin-bottom: 15px;
+    }
+    .ramo {
+      background: #e9d7f5;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      transition: background-color 0.3s;
+    }
+    .ramo:hover { background: #d9b7f3; }
+    .ramo.bloqueado {
+      background: #d3c0d9;
+      color: #7a6b85;
+      cursor: not-allowed;
+      text-decoration: none !important;
+      opacity: 0.6;
+    }
+    .ramo.tachado {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+    /* Tooltip */
+    .ramo:hover::after {
+      content: attr(data-info);
+      position: absolute;
+      top: -30px;
+      left: 10px;
+      background: #9b5de5;
+      color: white;
+      padding: 5px 8px;
+      border-radius: 5px;
+      white-space: nowrap;
+      font-size: 12px;
+      z-index: 10;
+    }
+    /* Responsive */
+    @media (max-width: 800px) {
+      .malla { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Administración Hotelera y Gastronómica</h1>
+
+<div class="malla">
+
+  <!-- Semestre 1 -->
+  <div class="semestre" data-semestre="1">
+    <h2>1° Semestre</h2>
+    <div class="ramo" data-ramo="Administración I" data-credits="6 créditos" data-prereq="" data-info="6 créditos - Semestre 1" onclick="toggleRamo(this)">Administración I</div>
+    <div class="ramo" data-ramo="Inglés Inicial" data-credits="4 créditos" data-prereq="" data-info="4 créditos - Semestre 1" onclick="toggleRamo(this)">Inglés Inicial</div>
+    <div class="ramo" data-ramo="Matemáticas" data-credits="4 créditos" data-prereq="" data-info="4 créditos - Semestre 1" onclick="toggleRamo(this)">Matemáticas</div>
+    <div class="ramo" data-ramo="Higiene y Manipulación de Alimentos" data-credits="4 créditos" data-prereq="" data-info="4 créditos - Semestre 1" onclick="toggleRamo(this)">Higiene y Manipulación de Alimentos</div>
+    <div class="ramo" data-ramo="Introducción a la Hotelería I" data-credits="4 créditos" data-prereq="" data-info="4 créditos - Semestre 1" onclick="toggleRamo(this)">Introducción a la Hotelería I</div>
+    <div class="ramo" data-ramo="Taller de Autorregulación" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 1" onclick="toggleRamo(this)">Taller de Autorregulación</div>
+    <div class="ramo" data-ramo="Introducción a la Restauración y Servicio" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 1" onclick="toggleRamo(this)">Introducción a la Restauración y Servicio</div>
+  </div>
+
+  <!-- Semestre 2 -->
+  <div class="semestre" data-semestre="2">
+    <h2>2° Semestre</h2>
+    <div class="ramo" data-ramo="Administración II" data-credits="-" data-prereq="Administración I" data-info="6 créditos - Semestre 2" onclick="toggleRamo(this)">Administración II</div>
+    <div class="ramo" data-ramo="Inglés I" data-credits="4 créditos" data-prereq="Inglés Inicial" data-info="4 créditos - Semestre 2" onclick="toggleRamo(this)">Inglés I</div>
+    <div class="ramo" data-ramo="Contabilidad Financiera" data-credits="-" data-prereq="Matemáticas" data-info="Sin créditos - Semestre 2" onclick="toggleRamo(this)">Contabilidad Financiera</div>
+    <div class="ramo" data-ramo="Química de los Alimentos" data-credits="-" data-prereq="Higiene y Manipulación de Alimentos" data-info="Sin créditos - Semestre 2" onclick="toggleRamo(this)">Química de los Alimentos</div>
+    <div class="ramo" data-ramo="Turismo" data-credits="-" data-prereq="Introducción a la Hotelería I" data-info="Sin créditos - Semestre 2" onclick="toggleRamo(this)">Turismo</div>
+    <div class="ramo" data-ramo="Comunicación y Tecnologías de la Información" data-credits="-" data-prereq="Taller de Autorregulación" data-info="Sin créditos - Semestre 2" onclick="toggleRamo(this)">Comunicación y Tecnologías de la Información</div>
+    <div class="ramo" data-ramo="Cocina Institucional" data-credits="-" data-prereq="Introducción a la Restauración y Servicio" data-info="Sin créditos - Semestre 2" onclick="toggleRamo(this)">Cocina Institucional</div>
+  </div>
+
+  <!-- Semestre 3 -->
+  <div class="semestre" data-semestre="3">
+    <h2>3° Semestre</h2>
+    <div class="ramo" data-ramo="Gestión de Alojamientos" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 3" onclick="toggleRamo(this)">Gestión de Alojamientos</div>
+    <div class="ramo" data-ramo="Inglés II" data-credits="-" data-prereq="Inglés I" data-info="Sin créditos - Semestre 3" onclick="toggleRamo(this)">Inglés II</div>
+    <div class="ramo" data-ramo="Contabilidad de Costos" data-credits="-" data-prereq="Contabilidad Financiera" data-info="Sin créditos - Semestre 3" onclick="toggleRamo(this)">Contabilidad de Costos</div>
+    <div class="ramo" data-ramo="Gestión de Personas" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 3" onclick="toggleRamo(this)">Gestión de Personas</div>
+    <div class="ramo" data-ramo="Economía" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 3" onclick="toggleRamo(this)">Economía</div>
+    <div class="ramo" data-ramo="Taller de Integración de Primer Ciclo" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 3" onclick="toggleRamo(this)">Taller de Integración de Primer Ciclo</div>
+    <div class="ramo" data-ramo="Cocina Chilena y Regional" data-credits="-" data-prereq="Cocina Institucional" data-info="Sin créditos - Semestre 3" onclick="toggleRamo(this)">Cocina Chilena y Regional</div>
+  </div>
+
+  <!-- Semestre 4 -->
+  <div class="semestre" data-semestre="4">
+    <h2>4° Semestre</h2>
+    <div class="ramo" data-ramo="Gestión de Reservas y Recepción" data-credits="-" data-prereq="Gestión de Alojamientos" data-info="Sin créditos - Semestre 4" onclick="toggleRamo(this)">Gestión de Reservas y Recepción</div>
+    <div class="ramo" data-ramo="Inglés III" data-credits="-" data-prereq="Inglés II" data-info="Sin créditos - Semestre 4" onclick="toggleRamo(this)">Inglés III</div>
+    <div class="ramo" data-ramo="Finanzas" data-credits="-" data-prereq="Contabilidad de Costos" data-info="Sin créditos - Semestre 4" onclick="toggleRamo(this)">Finanzas</div>
+    <div class="ramo" data-ramo="Marketing de la Hospitalidad" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 4" onclick="toggleRamo(this)">Marketing de la Hospitalidad</div>
+    <div class="ramo" data-ramo="Aspectos Legales de la Industria de la Hospitalidad" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 4" onclick="toggleRamo(this)">Aspectos Legales de la Industria de la Hospitalidad</div>
+    <div class="ramo" data-ramo="Estadística Aplicada" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 4" onclick="toggleRamo(this)">Estadística Aplicada</div>
+    <div class="ramo" data-ramo="Cocina Internacional" data-credits="-" data-prereq="Cocina Chilena y Regional" data-info="Sin créditos - Semestre 4" onclick="toggleRamo(this)">Cocina Internacional</div>
+  </div>
+
+  <!-- Semestre 5 -->
+  <div class="semestre" data-semestre="5">
+    <h2>5° Semestre</h2>
+    <div class="ramo" data-ramo="Administración de la Producción y Operaciones" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 5" onclick="toggleRamo(this)">Administración de la Producción y Operaciones</div>
+    <div class="ramo" data-ramo="Inglés IV" data-credits="-" data-prereq="Inglés III" data-info="Sin créditos - Semestre 5" onclick="toggleRamo(this)">Inglés IV</div>
+    <div class="ramo" data-ramo="Taller de Emprendimiento" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 5" onclick="toggleRamo(this)">Taller de Emprendimiento</div>
+    <div class="ramo" data-ramo="Nutrición" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 5" onclick="toggleRamo(this)">Nutrición</div>
+    <div class="ramo" data-ramo="Gestión de Eventos y Banquetes" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 5" onclick="toggleRamo(this)">Gestión de Eventos y Banquetes</div>
+    <div class="ramo" data-ramo="Taller de Integración de Perfil de Egreso UV I" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 5" onclick="toggleRamo(this)">Taller de Integración de Perfil de Egreso UV I</div>
+    <div class="ramo" data-ramo="Enología, Bar y Servicio" data-credits="-" data-prereq="Cocina Internacional" data-info="Sin créditos - Semestre 5" onclick="toggleRamo(this)">Enología, Bar y Servicio</div>
+  </div>
+
+  <!-- Semestre 6 -->
+  <div class="semestre" data-semestre="6">
+    <h2>6° Semestre</h2>
+    <div class="ramo" data-ramo="Gestión de Alimentos y Bebidas" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 6" onclick="toggleRamo(this)">Gestión de Alimentos y Bebidas</div>
+    <div class="ramo" data-ramo="Inglés V" data-credits="-" data-prereq="Inglés IV" data-info="Sin créditos - Semestre 6" onclick="toggleRamo(this)">Inglés V</div>
+    <div class="ramo" data-ramo="Gestión de Operaciones Hoteleras" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 6" onclick="toggleRamo(this)">Gestión de Operaciones Hoteleras</div>
+    <div class="ramo" data-ramo="Gestión de Calidad en Empresas de la Hospitalidad" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 6" onclick="toggleRamo(this)">Gestión de Calidad en Empresas de la Hospitalidad</div>
+    <div class="ramo" data-ramo="Taller de Integración Perfil de Egreso UV II" data-credits="-" data-prereq="Taller de Integración de Perfil de Egreso UV I" data-info="Sin créditos - Semestre 6" onclick="toggleRamo(this)">Taller de Integración Perfil de Egreso UV II</div>
+    <div class="ramo" data-ramo="Pastelería" data-credits="-" data-prereq="Enología, Bar y Servicio" data-info="Sin créditos - Semestre 6" onclick="toggleRamo(this)">Pastelería</div>
+    <div class="ramo" data-ramo="Práctica Intermedia" data-credits="-" data-prereq="" data-info="Sin créditos - Semestre 6" onclick="toggleRamo(this)">Práctica Intermedia</div>
+  </div>
+
+</div>
+
+<script>
+  // ----- Funciones principales -----
+  function toggleRamo(elem) {
+    if (elem.classList.contains('bloqueado')) return;            // No se deja marcar si está bloqueado
+    elem.classList.toggle('tachado');                            // Tachar / destachar
+    actualizarBloqueos();                                        // Actualizar dependencias
+    guardarEstado();                                             // Guardar cambios
+  }
+
+  function actualizarBloqueos() {
+    const ramos = document.querySelectorAll('.ramo');
+
+    // Desbloquear todo primero
+    ramos.forEach(r => r.classList.remove('bloqueado'));
+
+    // Bloquear si el prerrequisito no está tachado
+    ramos.forEach(r => {
+      const prereq = r.getAttribute('data-prereq');
+      if (prereq) {
+        const prereqRamo = [...ramos].find(x => x.getAttribute('data-ramo') === prereq);
+        if (prereqRamo && !prereqRamo.classList.contains('tachado')) {
+          r.classList.add('bloqueado');
+          r.classList.remove('tachado');   // Si estaba tachado y quedó bloqueado, destachar
+        }
+      }
+    });
+  }
+
+  // ----- Guardar y cargar estado -----
+  function guardarEstado() {
+    const ramos = document.querySelectorAll('.ramo');
+    const estado = {};
+    ramos.forEach(r => {
+      estado[r.getAttribute('data-ramo')] = { tachado: r.classList.contains('tachado') };
+    });
+    localStorage.setItem('estadoRamos', JSON.stringify(estado));
+  }
+
+  function cargarEstado() {
+    const estado = JSON.parse(localStorage.getItem('estadoRamos') || '{}');
+    const ramos = document.querySelectorAll('.ramo');
+    ramos.forEach(r => {
+      const data = estado[r.getAttribute('data-ramo')];
+      if (data && data.tachado) {
+        r.classList.add('tachado');
+      }
+    });
+  }
+
+  // ----- Al cargar la página -----
+  cargarEstado();        // Recuperar lo guardado
+  actualizarBloqueos();  // Aplicar bloqueos según prerrequisitos
+</script>
+
+</body>
+</html>
